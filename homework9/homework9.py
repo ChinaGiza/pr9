@@ -1,13 +1,13 @@
 import re
 
 email = input(">>> Введите свой e-mail: ")
-matches = re.match(r"[a-z0-9\.]{1,100}@[a-z0-9\.]{1,100}", email)
+matches = re.match(r"[a-zA-Z0-9\.\_\-]{1,}@[a-zA-Z0-9\.\-]{1,}\.[a-zA-Z]{2,}", email)
 
 if matches:
-    username = re.findall(r"[a-z0-9\.]{1,100}@", email)
-    domain = re.findall(r"@[a-z0-9\.]{1,100}", email)
+    username = re.findall(r"[a-zA-Z0-9\.\_\-]{1,}@", email)
+    domain = re.findall(r"@[a-zA-Z0-9\.\-]{1,}", email)
     print(f"### e-mail: {email}")
-    print(f"### Имя пользователя: {username[0][0:-1]}")
+    print(f"### Имя пользователя: {username[0][:-1]}")
     print(f"### Доменное имя почты: {domain[0][1:]}")
 else:
-    print("!!! Ошибка: e-mail содержит символы, не являющиеся точкой (.) и не принадлежащие a-z и 0-9")
+    print("!!! Ошибка: Введен некорректный e-mail")
